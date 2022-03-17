@@ -1,0 +1,11 @@
+npm install --global yarn  ---- instalar o yarn 
+
+yarn create vite ----- criar pojeto react --
+
+yarn ---- instalar dependencies do projeto react
+
+yarn dev ----- rodar o prejeto
+
+yarn add <LIB> ----- adcionar uma biblioteca
+
+yarn add axios ---- instalar axios
