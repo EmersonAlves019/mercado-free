@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import * as S from "./styles";
 import ProductInfo from '../ProductInfo/index';
 
-export default class Product extends Component {
-  render() {
-    const { products } = this.props;
+const Product = ({ products }) => {
     return products?.map(({ title, price, thumbnail, shipping, id }) => {
       return (
         <S.ProductCardContainer key={id} >
@@ -20,4 +18,5 @@ export default class Product extends Component {
       );
     });
   }
-}
+
+ export default Product;

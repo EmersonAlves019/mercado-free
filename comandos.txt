@@ -9,3 +9,13 @@ yarn dev ----- rodar o prejeto
 yarn add <LIB> ----- adcionar uma biblioteca
 
 yarn add axios ---- instalar axios
+
+
+yarn
+
+axios
+
+react hook form 
+
+component functional
+

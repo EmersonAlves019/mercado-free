@@ -8,6 +8,7 @@ export const ProductInfosContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     height: 300px;
+    border-radius: 0 0 8px 8px;
 `
 
 export const ProductPrice = styled.p`

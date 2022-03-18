@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
 import * as S from './styles'
 
-export default class ProductInfo extends Component {
-  render() {
-    const { props } = this;
+const ProductInfo = ({ price, shipping, title }) => {
     return (
       <S.ProductInfosContainer >
         <S.ProductPrice >
-          {props.price?.toLocaleString('pt-br', {
+          {price?.toLocaleString('pt-br', {
             style: 'currency',
             currency: 'BRL',
           })}
         </S.ProductPrice>
-        {props.shipping && <S.ProductFreeShipping>Frete grátis</S.ProductFreeShipping>}
+        {shipping && <S.ProductFreeShipping>Frete grátis</S.ProductFreeShipping>}
         <S.ProductTitle >
-          <p>{props.title}</p>
+          <p>{title}</p>
         </S.ProductTitle>
       </S.ProductInfosContainer>
     );
   }
-}
 
+export default ProductInfo;
