@@ -1,29 +1,36 @@
-import { useMarket } from '../../Context/Hooks/MarketProvider'
-import * as S from './styles'
+import { useNavigate } from 'react-router-dom';
+import { useMarket } from '../../Context/Hooks/MarketProvider';
+import * as S from './styles';
 
-import React from "react";
+import React from 'react';
 
 export default function Categories() {
-  const { categories, setCategory, setVisible } = useMarket()   
+  const { categories, setCategory } = useMarket();
+
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    setCategory(e.target.id);
+    navigate('/');
+  };
 
   return (
-    <S.CategoryDropdownContainer>
-
-    <S.CategoryDropdown onMouseOver={() => setVisible(true)}
-      onMouseLeave={() => setTimeout(() => { setVisible(false) }, 300 ) }>
-      <p> Categorias <S.ArrowDropDown/> </p>
-      <div>    
-        {categories.map(({ name, id }) => (
-          <button
-            key={id}
-            id={id}
-            onClick={(e) => setCategory(e.target.id) }
-          >
-            {name}
-          </button>
-         ))}
-      </div>
-    </S.CategoryDropdown>
-    </S.CategoryDropdownContainer>
+    <>
+      <S.CategoryDropdownContainer>
+        <S.CategoryDropdown>
+          <p>
+            Categorias <S.ArrowDropDown />
+          </p>
+          <div>
+            {categories.map(({ name, id }) => (
+              <button key={id} id={id} onClick={handleClick}>
+                {name}
+              </button>
+            ))}
+          </div>
+          {<S.DropDownOverlay className='overlay' />}
+        </S.CategoryDropdown>
+      </S.CategoryDropdownContainer>
+    </>
   );
-};
+}

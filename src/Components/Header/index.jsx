@@ -1,24 +1,32 @@
-import React from 'react'
-import * as S from './styles'
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import mercadoLivreLogo from '../../Assets/Images/mercado-livre-logo.svg'
-import NavbarHeader from "./../NavbarHeader/index";
-import SearchInput from "./../SearchInput/index";
-
+import React, { useEffect, useState } from 'react';
+import * as S from './styles';
+import mercadoLivreLogo from '../../Assets/Images/mercado-livre-logo.svg';
+import NavbarHeader from './../NavbarHeader/index';
+import SearchInput from './../SearchInput/index';
 
 export default function Header() {
+  const [color, setColor] = useState('black');
+
+  const toggleColor = () => {
+    setColor((color) => (color === 'red' ? 'black' : 'red'));
+  };
+
+  useEffect(() => {
+    console.log('oi');
+  });
+
   return (
-      <S.HeaderContainer>
-        <S.Logo>
-          <img src={mercadoLivreLogo} alt="MercadoLogo" ></img>
+    <S.HeaderContainer>
+      <S.Logo>
+        <img src={mercadoLivreLogo} alt='MercadoLogo'></img>
       </S.Logo>
       <S.SearchAndNavbarContainer>
-        <SearchInput/>
+        <SearchInput />
         <NavbarHeader />
       </S.SearchAndNavbarContainer>
-        <div>
-          <AiOutlineShoppingCart style={{position: 'absolute',  right: 10, top: 10, width: '50px', height: '50px' }}/>
-        </div>
-      </S.HeaderContainer>
-  )
+      <div>
+        <S.OutlineShoppingCart onClick={toggleColor} color={color} />
+      </div>
+    </S.HeaderContainer>
+  );
 }
