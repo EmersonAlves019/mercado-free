@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import * as S from "./styles";
+import React from 'react';
+import * as S from './styles';
 import ProductInfo from '../ProductInfo/index';
 
-export default class Product extends Component {
-  render() {
-    const { products } = this.props;
-    return products?.map(({ title, price, thumbnail, shipping, id }) => {
-      return (
-        <S.ProductCardContainer key={id} >
+const Product = ({ products }) => {
+  return products?.map(({ title, price, thumbnail, shipping, id }) => {
+    return (
+      <S.SLink key={id} to={`/product-details/${id}`}>
+        <S.ProductCardContainer>
           <S.ProductImage>
             <img src={thumbnail.replace('I.jpg', 'J.jpg')} alt={title} />
           </S.ProductImage>
@@ -15,9 +14,11 @@ export default class Product extends Component {
             price={price}
             title={title}
             shipping={shipping.free_shipping}
-          ></ProductInfo>
+          />
         </S.ProductCardContainer>
-      );
-    });
-  }
-}
+      </S.SLink>
+    );
+  });
+};
+
+export default Product;
